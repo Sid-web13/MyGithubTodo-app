@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>To-Do List</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', path='/styles.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>My To-Do List</h1>
+    </header>
+
+    <main class="container">
+
+        <!-- ADD TASK SECTION -->
+        <section class="card">
+
+            <h2>Add new task</h2>
+
+            <form class="task-form" action="/add" method="POST">
+
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="Enter a task"
+                    aria-label="Task"
+                    required
+                >
+
+                <button type="submit">Add</button>
+
+            </form>
+
+        </section>
+
+
+        <!-- DISPLAY TASKS -->
+        <section class="card">
+
+            <h2>Your tasks</h2>
+
+            <ul class="task-list">
+
+                {% for task in tasks %}
+
+                <li class="task">
+
+                    <!-- COMPLETE TASK -->
+                    <form action="/toggle/{{ task.id }}" method="POST">
+
+                        <input
+                            type="checkbox"
+                            {% if task.completed %}checked{% endif %}
+                            onchange="this.form.submit()"
+                        >
+
+                    </form>
+
+                    <!-- TASK TITLE -->
+                    <label class="{% if task.completed %}done{% endif %}">
+                        {{ task.title }}
+                    </label>
+
+                    <!-- DELETE TASK -->
+                    <form action="/delete/{{ task.id }}" method="POST">
+
+                        <button class="delete" type="submit">
+                            Delete
+                        </button>
+
+                    </form>
+
+                </li>
+
+                {% else %}
+
+                <p>No tasks yet. Add your first task!</p>
+
+                {% endfor %}
+
+            </ul>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
