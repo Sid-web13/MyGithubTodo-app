@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1>To-Do List</h1>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Add a task</h2>
+      <form class="task-form">
+        <input type="text" placeholder="Enter a task" aria-label="Task">
+        <button type="submit">Add</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Your tasks</h2>
+      <ul class="task-list">
+        <li class="task">
+          <input type="checkbox" id="t1">
+          <label for="t1">Buy groceries</label>
+          <button class="delete" type="button">Delete</button>
+        </li>
+        <li class="task">
+          <input type="checkbox" id="t2" checked>
+          <label for="t2" class="done">Pay electricity bill</label>
+          <button class="delete" type="button">Delete</button>
+        </li>
+        <li class="task">
+          <input type="checkbox" id="t3">
+          <label for="t3">Finish project report</label>
+          <button class="delete" type="button">Delete</button>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+</body>
+</html>
